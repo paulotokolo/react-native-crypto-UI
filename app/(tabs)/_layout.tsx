@@ -1,35 +1,45 @@
+import { FontAwesome6 } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { FontAwesome } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+    <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
+          title: 'Training',
+          headerShown: false,
+          tabBarIcon: ({ color }) => <MaterialIcons name="inbox" size={23} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="diet"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
+          title: 'Diet',
+          tabBarIcon: ({ color }) => <FontAwesome6 name="bowl-food" size={23} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="trade"
+        options={{
+          title: 'Trade',
+          headerTitle: 'Trade',
+          headerStyle: {
+            backgroundColor: '#0078D7', // Set the header background color to blue
+          },
+          headerTintColor: '#fff', // Optionally, set the header text color to white
+          tabBarIcon: ({ color }) => <FontAwesome size={23} name="bar-chart-o" color={color} />,
+        }}
+      />
+
+      {/* hide this from the tab */}
+      <Tabs.Screen
+        name="profile"
+        options={{
+          href: null
         }}
       />
     </Tabs>
