@@ -1,45 +1,61 @@
-import { FontAwesome6 } from '@expo/vector-icons';
 import { Tabs } from 'expo-router';
-import { FontAwesome } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
-import { StatusBar } from 'expo-status-bar';
+import bank from '@/assets/images/bank.png';
+import home from '@/assets/images/home.png';
+import message from '@/assets/images/email.png';
+import profile from '@/assets/images/user.png';
+import fullscreen from '@/assets/images/back.png';
+import { Image, TouchableOpacity } from 'react-native';
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }}>
+    <Tabs screenOptions={{ headerStyle: { backgroundColor: 'black' }, tabBarStyle: { backgroundColor: 'black', borderColor: 'black' }, tabBarActiveTintColor: 'white' }} >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Training',
+          tabBarShowLabel: false,
+          title: '',
           headerShown: false,
-          tabBarIcon: ({ color }) => <MaterialIcons name="inbox" size={23} color={color} />,
+          tabBarIcon: ({ focused }) => <Image source={home} className='w-6 h-6' />,
         }}
       />
       <Tabs.Screen
-        name="diet"
+        name="bank"
         options={{
-          title: 'Diet',
-          tabBarIcon: ({ color }) => <FontAwesome6 name="bowl-food" size={23} color={color} />,
+          tabBarShowLabel: false,
+          title: '',
+          headerShown: false,
+          tabBarIcon: ({ focused }) => <Image source={bank} className='w-6 h-6' />,
         }}
       />
       <Tabs.Screen
-        name="trade"
+        name="message"
         options={{
-          title: 'Trade',
-          headerTitle: 'Trade',
-          headerStyle: {
-            backgroundColor: '#0078D7', // Set the header background color to blue
-          },
-          headerTintColor: '#fff', // Optionally, set the header text color to white
-          tabBarIcon: ({ color }) => <FontAwesome size={23} name="bar-chart-o" color={color} />,
+          tabBarShowLabel: false,
+          title: '',
+          headerShown: false,
+          tabBarIcon: ({ focused }) => <Image source={message} className='w-6 h-6' />,
         }}
       />
-
-      {/* hide this from the tab */}
       <Tabs.Screen
         name="profile"
         options={{
-          href: null
+          tabBarShowLabel: false,
+          title: '',
+          headerShown: false,
+          tabBarIcon: ({ focused }) => <Image source={profile} className='w-6 h-6' />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="transfer"
+        options={{
+          href: null,
+          title: 'Transfer',
+          headerTintColor: 'white',
+          headerTitleAlign: 'center',
+          headerRight: () => (
+            <TouchableOpacity className='bg-gray-500 w-10 h-10 rounded-xl'><Image source={fullscreen} className='my-2 mx-2 w-5 h-5' /></TouchableOpacity>
+          )
         }}
       />
     </Tabs>

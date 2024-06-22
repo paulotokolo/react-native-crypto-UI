@@ -2,14 +2,14 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-const Profile = () => {
+const bank = () => {
   return (
     <SafeAreaView>
       <View>
-        <Text className='text-blue-500'>profile</Text>
+        <Text className='text-blue-500'>bank</Text>
       </View>
     </SafeAreaView>
   )
 }
 
-export default Profile
+export default bank
